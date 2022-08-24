@@ -1,12 +1,13 @@
 const connection = require('../database/connection')
 const jwt = require('jsonwebtoken')
-
+const md5 = require('md5');
 
 module.exports = {
   async login(request, response) {
     const { email, password } = request.body
+
     const user = await connection('users')
-      .where({ email, password })
+      .where({ email, 'password': md5(password) })
       .select('*').first()
     if(!user) {
       return response.status(400).json({ error: 'No user found with this credentials'})

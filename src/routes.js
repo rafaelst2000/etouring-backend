@@ -10,14 +10,16 @@ const login = require('./middleware/login')
 routes.post('/session', SessionController.login)
 
 /* USER ROUTES */
-routes.post('/users', UserController.create)
 routes.get('/users', UserController.index)
 routes.get('/users/:id', UserController.index)
+routes.post('/users', UserController.create)
 routes.put('/users', login, UserController.update)
 
 /* POST ROUTES */
-routes.post('/posts', PostsController.create)
 routes.get('/posts', PostsController.index)
+routes.post('/posts', login, PostsController.create)
+routes.put('/posts/:id', login, PostsController.update)
+routes.delete('/posts/:id', login, PostsController.delete)
 
 
 module.exports = routes
