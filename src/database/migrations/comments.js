@@ -6,6 +6,8 @@ exports.up = function(knex) {
   return knex.schema.createTable('comments', function(table) {
     table.increments()
     table.dateTime('comment_at').notNullable()
+    table.dateTime('updated_at').notNullable()
+    table.string('description').notNullable() 
 
     table.integer('user_id').notNullable()
     table.foreign('user_id').references('id').inTable('users')

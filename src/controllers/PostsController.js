@@ -1,16 +1,51 @@
 const connection = require('../database/connection')
 const md5 = require('md5');
 
+const putCommentsInPosts = async (data) => {
+  const setPosts = new Set();
+  data = data.map(post => {
+    const filteredPosts = data.filter(p => (p.id === post.id) && post.comment_id)
+    const comments = filteredPosts.map(p => { 
+      return { description: p.comment_description, id: p.comment_id, user_id: p.comment_user_id }
+    })
+    return {
+      id: post.id,
+      description: post.description,
+      user_id: post.user_id,
+      comments
+    }
+  })
+  const filteredPosts = data.filter((post) => {
+    const duplicatedPost = setPosts.has(post.id);
+    setPosts.add(post.id);
+    return !duplicatedPost;
+  });
+  return filteredPosts
+}
+
 module.exports = {
+
   async index(request, response) {
-    const { page = 1 } = request.query
+    const { page } = request.query
     const [count] = await connection('posts').count()
-    const posts = await connection('posts')
-      .limit(5).offset((page - 1) * 5)
-      .select('*')
+    
+    let posts = []
+    if(!page || page == 0) {
+      posts = await connection('posts')
+      .leftJoin('comments', 'comments.post_id', "=", "posts.id")
+      .select(['posts.*', "comments.description as comment_description", "comments.id as comment_id", "comments.user_id as comment_user_id"])
+      .then(data => putCommentsInPosts(data))
+    } 
+    else {
+      posts = await connection('posts')
+        .leftJoin('comments', 'comments.post_id', "=", "posts.id")
+        .limit(5).offset((page - 1) * 5)
+        .select(['posts.*', "comments.description as comment_description", "comments.id as comment_id", "comments.user_id as comment_user_id"])
+        .then(data => putCommentsInPosts(data))
+    }
 
     response.header('X-Total-Count', count['count(*)'])
-    return response.json(posts)
+    return response.status(200).json(posts)
   },
 
   async create(request, response) {
