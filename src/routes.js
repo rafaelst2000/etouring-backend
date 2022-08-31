@@ -1,7 +1,7 @@
 const express = require('express')
 const routes = express.Router()
 
-const UserController = require('./controllers/UserController')
+const UsersController = require('./controllers/UsersController')
 const PostsController = require('./controllers/PostsController')
 const CommentsController = require('./controllers/CommentsController')
 const SessionController = require('./controllers/SessionController')
@@ -11,10 +11,10 @@ const login = require('./middleware/login')
 routes.post('/session', SessionController.login)
 
 /* USERS ROUTES */
-routes.get('/users', UserController.index)
-routes.get('/users/:id', UserController.index)
-routes.post('/users', UserController.create)
-routes.put('/users', login, UserController.update)
+routes.get('/users', UsersController.index)
+routes.get('/users/:id', UsersController.index)
+routes.post('/users', UsersController.create)
+routes.put('/users', login, UsersController.update)
 
 /* POSTS ROUTES */
 routes.get('/posts', PostsController.index)
