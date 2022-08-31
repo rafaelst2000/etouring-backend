@@ -53,30 +53,80 @@ Siga as etapas seguintes para instalar e executar o projeto:
 4. Enjoy! =D
 
    ```sh
-   abra seu app para teste de API e crie as requisições abaixo a partir do localhost:3333.
+   abra seu app para teste de API e crie as requisições abaixo a partir da localhost:3333.
    ``` 
    <br>
    
    
 ## **⚡Rotas e parâmetros**
 
-1. Usuários
-
- # Parâmetros
-   ```sh
-    name
-    email
-    password
-    image
-   ```
+# 1. /users
 
    ```sh
-    GET: /users  | lista todos usuários disponíveis
-    GET: /users/:id  | lista o usuário com o respectivo id
-    POST: /users  | cria um usuário
-    PUT: /users | REQUER AUTENTICAÇÃO | edita o usuário autenticado
+    GET: lista todos usuários disponíveis
+       - sem parâmetros -
+      
+    GET: :id lista o usuário com o respectivo id
+       - route params -
+         id
+         
+    POST: cria um usuário
+       - body - 
+       {
+          "name": "seu nome",
+          "email": "seu@email.com",
+          "password": "sua-senha",
+          "image": "sua url de imagem"
+       }
+       
+    
+    PUT: REQUER AUTENTICAÇÃO | edita o usuário autenticado
+        - body - 
+       {
+          "name": "seu nome",
+          "email": "seu@email.com",
+          "password": "sua-senha",
+          "image": "sua url de imagem"
+       }
+       
+       - Authorization Bearer: seu token
    ```
 
+# 2. /posts
+
+   ```sh
+    GET: lista todos os posts disponíveis
+       - sem parâmetros -
+      
+    GET: ?page=1 lista todos os posts paginando
+       - query params -
+        page: 1
+         
+    POST: REQUER AUTENTICAÇÃO | cria uma postagem
+       - body - 
+       {
+          "description": "sua descrição",
+       }
+       
+       - Authorization Bearer: seu token
+    
+    PUT: :id REQUER AUTENTICAÇÃO | edita um post
+       - route params -
+         id
+         
+        - body - 
+       {
+          "description": "sua descrição",
+       }
+       
+       - Authorization Bearer: seu token
+       
+    DELETE: :id REQUER AUTENTICAÇÃO | deleta um post
+       - route params -
+         id
+         
+       - Authorization Bearer: seu token
+   ```
  
  <div align="center">
   Made by <a href="https://www.linkedin.com/in/rafaelst2000/" target="_blank">Rafael Trevisan</a>
