@@ -91,8 +91,18 @@ Siga as etapas seguintes para instalar e executar o projeto:
        
        - Authorization Bearer: seu token
    ```
+ # 2. /sessions
 
-# 2. /posts
+ ```sh
+  POST: faz o login do usuário, retornando seu token de autenticação
+     - body - 
+     {
+        "email": "seu@email.com",
+        "password": "sua-senha",
+     }
+ ```
+
+# 3. /posts
 
    ```sh
     GET: lista todos os posts disponíveis
@@ -122,6 +132,36 @@ Siga as etapas seguintes para instalar e executar o projeto:
        - Authorization Bearer: seu token
        
     DELETE: :id REQUER AUTENTICAÇÃO | deleta um post
+       - route params -
+         id
+         
+       - Authorization Bearer: seu token
+   ```
+ 
+ # 4. /comments
+
+   ```sh 
+    POST: REQUER AUTENTICAÇÃO | cria um comentário no post desejado
+       - body - 
+       {
+        "description": "Esse é um comentário",
+        "post_id": 3
+       }
+       
+       - Authorization Bearer: seu token
+    
+    PUT: :id REQUER AUTENTICAÇÃO | edita um comentário
+       - route params -
+         id
+         
+        - body - 
+       {
+          "description": "comentario atualizado"
+       }
+       
+       - Authorization Bearer: seu token
+       
+    DELETE: :id REQUER AUTENTICAÇÃO | deleta um comentário
        - route params -
          id
          
