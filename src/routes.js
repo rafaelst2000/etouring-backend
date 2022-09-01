@@ -8,7 +8,7 @@ const SessionsController = require('./controllers/SessionsController')
 const login = require('./middleware/login')
 
 /* LOGIN ROUTE */
-routes.post('/session', SessionsController.login)
+routes.post('/sessions', SessionsController.login)
 
 /* USERS ROUTES */
 routes.get('/users', UsersController.index)
