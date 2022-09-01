@@ -29,7 +29,7 @@ module.exports = {
     const [count] = await connection('posts').count()
     
     let posts = []
-    if(!page || page == 0) {
+    if(!page || page <= 0) {
       posts = await connection('posts')
         .leftJoin('comments', 'comments.post_id', "=", "posts.id")
         .select(['posts.*', "comments.description as comment_description", "comments.id as comment_id", "comments.user_id as comment_user_id"])
