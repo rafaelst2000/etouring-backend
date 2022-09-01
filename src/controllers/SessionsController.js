@@ -12,7 +12,7 @@ module.exports = {
     if(!user) {
       return response.status(400).json({ error: 'No user found with this credentials'})
     }
-    const token = jwt.sign({ user, }, 'myJwtSecretKey', { expiresIn: "24h" })
+    const token = jwt.sign({ user }, 'myJwtSecretKey', { expiresIn: "24h" })
     return response.status(200).json({ message: 'User has been authenticated', token })
   }
 
