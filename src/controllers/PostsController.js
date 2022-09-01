@@ -24,7 +24,6 @@ const putCommentsInPosts = async (data) => {
 }
 
 module.exports = {
-
   async index(request, response) {
     const { page } = request.query
     const [count] = await connection('posts').count()

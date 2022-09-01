@@ -4,11 +4,11 @@ const routes = express.Router()
 const UsersController = require('./controllers/UsersController')
 const PostsController = require('./controllers/PostsController')
 const CommentsController = require('./controllers/CommentsController')
-const SessionController = require('./controllers/SessionController')
+const SessionsController = require('./controllers/SessionsController')
 const login = require('./middleware/login')
 
 /* LOGIN ROUTE */
-routes.post('/session', SessionController.login)
+routes.post('/session', SessionsController.login)
 
 /* USERS ROUTES */
 routes.get('/users', UsersController.index)
