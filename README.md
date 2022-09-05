@@ -45,13 +45,19 @@ Siga as etapas seguintes para instalar e executar o projeto:
    npm install
    ```
    
-3. Execute o projeto em servidor de desenvolvimento:
+3. Acesse o projeto e crie um arquivo .env na raiz:
+
+   ```sh
+   ABSTRACT_EMAIL_VALIDATION_KEY="seu token"
+   ```
+   
+4. Execute o projeto em servidor de desenvolvimento:
 
    ```sh
    npm start
    ``` 
    
-4. Enjoy! =D
+5. Enjoy! =D
 
    ```sh
    abra seu app para teste de API e crie as requisições abaixo a partir da localhost:3333.
