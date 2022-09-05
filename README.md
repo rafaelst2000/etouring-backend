@@ -14,6 +14,7 @@ O projeto tem como finalidade colocar em prática o conteúdo aprendido durante 
   - **Express - Framework**
   - **SQLite - Banco de dados relacional**
   - **JWT - Token de autenticação**
+  - **Abstract API - Validação de e-mail**
 
 ## **📩 Commits**
 
@@ -90,6 +91,9 @@ Siga as etapas seguintes para instalar e executar o projeto:
        }
        
        - Authorization Bearer: seu token
+       
+    DELETE: REQUER AUTENTICAÇÃO | deleta o usuário autenticado
+     - Authorization Bearer: seu token
    ```
  # 2. /sessions
 
