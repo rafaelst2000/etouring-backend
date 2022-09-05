@@ -15,6 +15,7 @@ routes.get('/users', UsersController.index)
 routes.get('/users/:id', UsersController.index)
 routes.post('/users', UsersController.create)
 routes.put('/users', login, UsersController.update)
+routes.delete('/users', login, UsersController.delete)
 
 /* POSTS ROUTES */
 routes.get('/posts', PostsController.index)

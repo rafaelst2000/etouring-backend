@@ -10,7 +10,7 @@ module.exports = {
       .where({ email, 'password': md5(password) })
       .select('*').first()
     if(!user) {
-      return response.status(400).json({ error: 'No user found with this credentials'})
+      return response.status(400).json({ error: 'Wrong credentials'})
     }
     const token = jwt.sign({ user }, 'myJwtSecretKey', { expiresIn: "24h" })
     return response.status(200).json({ message: 'User has been authenticated', token })
