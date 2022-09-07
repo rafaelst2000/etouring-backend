@@ -71,7 +71,7 @@ Siga as etapas seguintes para instalar e executar o projeto:
    <br>
    
    
-## **⚡Rotas e parâmetros**
+## **🛣️ Rotas e parâmetros**
 
 # 1. /users
 
