@@ -1,14 +1,6 @@
+const { validateEmail } = require('../helpers')
 const connection = require('../database/connection')
 const md5 = require('md5')
-const fetch = require('node-fetch')
-
-const validateEmail = async (email) => {
-  const res = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_EMAIL_VALIDATION_KEY}&email=${email}`);
-  const body = await res.json();
-  const { is_valid_format } = body
-
-  return is_valid_format.value
-}
 
 module.exports = {
   async create(request, response) {
