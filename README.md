@@ -7,6 +7,12 @@
 
 O projeto tem como finalidade colocar em prática o conteúdo aprendido durante a disciplina de Serviços Web do curso superior de Sistemas para Internet do IFSUL Campus Charqueadas
 
+## **🛠️ Workspace do Postman**
+
+```
+https://www.postman.com/science-engineer-79052546/workspace/etouring/overview
+```
+
 ## **:computer: Tecnologias**
 
   - **Node.js - Javascript**
