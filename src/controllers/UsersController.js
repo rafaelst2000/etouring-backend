@@ -5,7 +5,7 @@ const md5 = require('md5')
 module.exports = {
   async create(request, response) {
     const { name, email, password, image } = request.body
-    if(!name || !email || !password) return response.status(400).json({ error: 'Bad request'})
+    if(!name || !email || !password || !image) return response.status(400).json({ error: 'Bad request'})
 
     const isValid = await validateEmail(email)
     if(!isValid) return response.status(400).json({ error: 'Email is not valid or is alredy in use'})
